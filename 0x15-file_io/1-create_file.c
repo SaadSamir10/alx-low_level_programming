@@ -17,10 +17,10 @@ int create_file(const char *filename, char *text_content)
 	f = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0600);
 	if (f == -1)
 		return (-1);
-	while (text_content[len] != NULL)
+	while (text_content[len] != '\0')
 		len++;
 	writen = write(f, text_content, len);
-	if (writen != length || writen == -1)
+	if (writen != len || writen == -1)
 		return (-1);
 	close(f);
 	return (1);
